@@ -113,7 +113,7 @@ class services {
     async get_userdetails(payload) {
 
         try {
-       
+
             if (!payload) {
                 return response.Not_found("fill proper query parameter")
             }
@@ -127,6 +127,7 @@ class services {
 
             const responseData = {
                 username: usermodel_datafind.username,
+                department: usermodel_datafind.department,
                 totalSickleave: usermodel_datafind.sickleave,
                 totalCasualLeave: usermodel_datafind.casualleave,
                 apply_leaveInfo: leavemodel_datafind
