@@ -62,7 +62,7 @@ class services {
             const endDate = moment(payload.enddate);
 
 
-            const daysDifference = endDate.diff(startDate, 'days');
+            const daysDifference = endDate.diff(startDate, 'days') + 1;
 
             const findLeave = await usermodel.findOne({ username: payload.username })
             if (!findLeave) {
