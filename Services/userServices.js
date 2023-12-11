@@ -151,7 +151,7 @@ class services {
 
 
 
-            return response.sendSuccess("Registration is successfully done", datafind)
+            return response.sendSuccess("data is sucessfully get", datafind)
 
         } catch (error) {
             console.log(error)
