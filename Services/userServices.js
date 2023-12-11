@@ -46,18 +46,6 @@ class services {
             if (validationResult.error) {
                 return response.badRequest("invalid request", validationResult.error.details.map(data => data.message))
             }
-
-
-
-            const dataSave = new Leavesmodel({
-                username: payload.username,
-
-                leavetype: payload.leavetype,
-                startdate: new Date(payload.startdate).toISOString().slice(0, 10),
-                enddate: new Date(payload.enddate).toISOString().slice(0, 10)
-
-            })
-            await dataSave.save();
             const startDate = moment(payload.startdate);
             const endDate = moment(payload.enddate);
 
@@ -100,7 +88,15 @@ class services {
 
                 }
             }
+            const dataSave = new Leavesmodel({
+                username: payload.username,
 
+                leavetype: payload.leavetype,
+                startdate: new Date(payload.startdate).toISOString().slice(0, 10),
+                enddate: new Date(payload.enddate).toISOString().slice(0, 10)
+
+            })
+            await dataSave.save();
             return response.sendSuccess("leave is successfully applyed")
         } catch (error) {
 
