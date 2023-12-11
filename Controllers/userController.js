@@ -27,6 +27,13 @@ class Controller {
         res.json(result);
 
     }
+    async get_total_users(req, res) {
+
+        
+        let result = await Services.get_total_users();
+        res.json(result);
+
+    }
 
 
 }

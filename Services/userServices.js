@@ -51,7 +51,7 @@ class services {
 
             const dataSave = new Leavesmodel({
                 username: payload.username,
-              
+
                 leavetype: payload.leavetype,
                 startdate: new Date(payload.startdate).toISOString().slice(0, 10),
                 enddate: new Date(payload.enddate).toISOString().slice(0, 10)
@@ -126,7 +126,7 @@ class services {
             }
 
             const leavemodel_datafind = await leavesmodel.find({ username: payload.username });
-            
+
             const responseData = {
                 username: usermodel_datafind.username,
                 totalSickleave: usermodel_datafind.sickleave,
@@ -143,7 +143,22 @@ class services {
 
         }
     }
+    async get_total_users() {
 
+        try {
+            const datafind = await usermodel.find({});
+
+
+
+
+            return response.sendSuccess("Registration is successfully done", datafind)
+
+        } catch (error) {
+            console.log(error)
+            return response.Internal_Server_Error("!! Oops  something it didn't expect and was unable to complete the request")
+        }
+
+    }
 };
 
 
