@@ -6,10 +6,7 @@ const leavechema = new Schema({
         type: String,
         required: true
     },
-    department: {
-        type: String
-
-    },
+   
     leavetype: {
         type: String
     },

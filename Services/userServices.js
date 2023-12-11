@@ -51,7 +51,7 @@ class services {
 
             const dataSave = new Leavesmodel({
                 username: payload.username,
-                department: payload.department,
+              
                 leavetype: payload.leavetype,
                 startdate: new Date(payload.startdate).toISOString().slice(0, 10),
                 enddate: new Date(payload.enddate).toISOString().slice(0, 10)
