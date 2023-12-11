@@ -113,6 +113,12 @@ class services {
     async get_userdetails(payload) {
 
         try {
+            const validationResult = validation.get_leave_details_validation(payload);
+
+
+            if (validationResult.error) {
+                return response.badRequest("invalid request", validationResult.error.details.map(data => data.message))
+            }
             const usermodel_datafind = await usermodel.findOne({ username: payload.username });
 
             if (!usermodel_datafind) {

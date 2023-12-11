@@ -15,7 +15,6 @@ function registration_validation(payload) {
 function apply_leave_validation(payload) {
     const schema = Joi.object({
         username: Joi.string().min(3).max(30).required(),
-        department: Joi.string().min(3).max(30).required(),
         leavetype: Joi.string().min(3).max(30).required(),
         startdate: Joi.date().required(),
         enddate: Joi.date().required(),
@@ -23,4 +22,12 @@ function apply_leave_validation(payload) {
 
     return schema.validate(payload)
 }
-module.exports = { registration_validation, apply_leave_validation };
+function get_leave_details_validation(payload) {
+    const schema = Joi.object({
+        username: Joi.string().min(3).max(30).required(),
+
+    });
+
+    return schema.validate(payload)
+}
+module.exports = { registration_validation, apply_leave_validation, get_leave_details_validation };
