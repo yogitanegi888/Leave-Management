@@ -114,11 +114,13 @@ class services {
 
         try {
             const usermodel_datafind = await usermodel.findOne({ username: payload.username });
-       
 
+            if (!usermodel_datafind) {
+                return response.Not_found("user not exist")
+            }
 
             const leavemodel_datafind = await leavesmodel.find({ username: payload.username });
-
+            
             const responseData = {
                 username: usermodel_datafind.username,
                 totalSickleave: usermodel_datafind.sickleave,
