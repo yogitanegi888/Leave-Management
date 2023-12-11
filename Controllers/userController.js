@@ -20,7 +20,7 @@ class Controller {
 
     }
     async get_userdetails(req, res) {
-        const payload = req.body
+        const payload = req.params.id
 
         let result = await Services.get_userdetails(payload);
         console.log("result", result)
