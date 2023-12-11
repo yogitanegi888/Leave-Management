@@ -1,33 +1,25 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const userfeedSchema = new Schema({
-    description: {
+const userschema = new Schema({
+    username: {
         type: String,
         required: true
     },
-    created_at: {
-        type: Date,
-        default: () => new Date()
-    },
-    userid: {
-        type: String,
-        required: true
-    },
-
-    intrested: {
-        type: [String],
-       
-
-
-    },
-    image: {
+    department: {
         type: String
+
+    },
+    sickleave: {
+        type: Number
+    },
+    casualleave: {
+        type: Number
 
     }
 
 
 });
 
-const userModel = mongoose.model("userFeeds", userfeedSchema);
-module.exports = userModel;
+const usermodel = mongoose.model("users", userschema);
+module.exports = usermodel;

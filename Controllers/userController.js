@@ -1,26 +1,33 @@
-const Services = require("../Services/userServices")
-const mongoose = require("mongoose");
+const Services = require("../Services/userServices");
+
 
 class Controller {
-    async createfeeds(req, res) {
-        let payload = req.userDetails
-        let reqBody=req.body
-        const file= req.file
-        let result = await Services.createfeeds(payload,file,reqBody);
+
+    async user_Registration(req, res) {
+
+        const payload = req.body
+        let result = await Services.user_Registration_services(payload);
+        res.json(result);
+
+    }
+    async apply_leaves(req, res) {
+
+        const payload = req.body
+
+        let result = await Services.User_apply_leave_services(payload);
+
+        res.json(result);
+
+    }
+    async get_userdetails(req, res) {
+        const payload = req.body
+
+        let result = await Services.get_userdetails(payload);
         console.log("result", result)
         res.json(result);
 
     }
-    async getUsertFeedsList(req, res) {
-        const reqBody=req.userDetails
-        const pageNumber = parseInt(req.query.pageNumber) || 0;
-        const limit = parseInt(req.query.limit) || 10;
-        let result = await Services.getUsertFeedsList(pageNumber,limit,reqBody);
-        console.log("result", result)
-        res.json(result);
 
-    }
-   
 
 }
 module.exports = new Controller()
