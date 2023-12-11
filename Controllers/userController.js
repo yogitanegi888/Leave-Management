@@ -20,8 +20,8 @@ class Controller {
 
     }
     async get_userdetails(req, res) {
-        const payload = req.params.username
-
+        const payload = req.query.username
+      
         let result = await Services.get_userdetails(payload);
         console.log("result", result)
         res.json(result);
@@ -29,7 +29,7 @@ class Controller {
     }
     async get_total_users(req, res) {
 
-        
+
         let result = await Services.get_total_users();
         res.json(result);
 

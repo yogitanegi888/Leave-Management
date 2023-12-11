@@ -113,19 +113,17 @@ class services {
     async get_userdetails(payload) {
 
         try {
-            const validationResult = validation.get_leave_details_validation(payload);
-
-
-            if (validationResult.error) {
-                return response.badRequest("invalid request", validationResult.error.details.map(data => data.message))
+       
+            if (!payload) {
+                return response.Not_found("fill proper query parameter")
             }
-            const usermodel_datafind = await usermodel.findOne({ username: payload.username });
+            const usermodel_datafind = await usermodel.findOne({ username: payload });
 
             if (!usermodel_datafind) {
                 return response.Not_found("user not exist")
             }
 
-            const leavemodel_datafind = await leavesmodel.find({ username: payload.username });
+            const leavemodel_datafind = await leavesmodel.find({ username: payload });
 
             const responseData = {
                 username: usermodel_datafind.username,
